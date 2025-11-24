@@ -1,5 +1,0 @@
-#pip install -r py.txt
-paramiko
-argparse
-markdown
-logging
