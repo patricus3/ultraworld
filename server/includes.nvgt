@@ -108,3 +108,4 @@
 #include "includes/multiversion.nvgt"
 #include "includes/servermenu.nvgt"
 #include "includes/spam/*.nvgt" /**/
+#include "includes/ratelimit.nvgt"

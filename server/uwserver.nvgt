@@ -175,6 +175,7 @@ void main() {
 		exit();
 	}
 	svd::load();
+	rli();
 	garbage_collect();
 	setupserver();
 	garbage_collect();
@@ -2407,6 +2408,11 @@ void login(string u, string p, string yv, uint id, string compid, string node_id
 		send_reliable(id, "block your client is out of date. Your version: " + yv + ". Minimum required version is " + version + ". Get the newest version by checking for updates, or from the following link:https://uw.posix.live", 0);
 		can_login = false;
 	}
+	//double r=rlc(compid,ip,u,node_id);
+	//if(r>0){
+	//	send_reliable(id,"block Banned for "+r+" mins (Rate Limit). "+(r/60.0)+" hours.",0);
+	//	can_login=false;
+	//}
 	for (uint i = 0; i < players.length(); i++) {
 		if (string_to_lower_case(players[i].name) == string_to_lower_case(u)) {
 			if (u == "kannadiga" or u == "RachelK" or u == "patricus" or u == "powermon" or u == "kiwi-james") {
@@ -2514,6 +2520,12 @@ void create_char(string username, string password, string email, int gender, uin
 	}
 	if (yv < version) {
 		send_reliable(id, "block your client is out of date. Your version: " + yv + ". Minimum required version is " + version + ". Get the newest version by checking for updates, or from the following link: https://posix.live/downloads/uw.zip", 0);
+		return;
+	}
+	double r=rlc(compid,ip,username,node_id);
+	if(r>0){
+		send_reliable(id,"block You have been temporarily banned for "+r+" minutes due to excessive account creation attempts.",0);
+		n.disconnect_peer(id);
 		return;
 	}
 	string charfolder = "chars/" + username;
