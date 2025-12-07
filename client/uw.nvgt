@@ -313,7 +313,7 @@ int rapidfire = 0;
 typedef uint8 usmall; typedef int8 small;
 sound@ bleepy;
 tone_synth bleeper, ts;
-string banid = generate_computer_id("S���uafama�����decolecionartampasdecr�nios" + app.version, true);
+string banid = generate_computer_id("S   uafama     decolecionartampasdecr nios" + app.version, true);
 network n;
 network_event e;
 string sndloc = "audio.dat";
@@ -488,9 +488,9 @@ void game() {
 }
 string keygen(string fn) {
 	string key = fn;
-	key = string_replace(key, "a", "�", true);
-	key = string_replace(key, "l", "�", true);
-	key = string_replace(key, " ", "�", true);
+	key = string_replace(key, "a", " ", true);
+	key = string_replace(key, "l", " ", true);
+	key = string_replace(key, " ", " ", true);
 	key = string_reverse(key);
 	key = string_hash(key, 2, true);
 	key = string_encrypt(key, key);
@@ -525,12 +525,6 @@ void readprefs() {
 		name = values[peramitors.find("name")];
 	if (peramitors.find("password") != -1)
 		password = values[peramitors.find("password")];
-	if (peramitors.find("voicechat") != -1)
-		voicechat = string_to_number(values[peramitors.find("voicechat")]);
-	if (peramitors.find("audioform_keyboard_echo") != -1)
-		audioform_keyboard_echo = string_to_number(values[peramitors.find("audioform_keyboard_echo")]);
-	if (peramitors.find("holdv") != -1)
-		holdv = string_to_number(values[peramitors.find("holdv")]);
 	if (peramitors.find("readerinterrupt") != -1)
 		readerinterrupt = string_to_number(values[peramitors.find("readerinterrupt")]);
 	if (peramitors.find("mfwc") != -1)
@@ -553,18 +547,6 @@ void readprefs() {
 		pitch = string_to_number(values[peramitors.find("pitch")]);
 	if (peramitors.find("have_cycle_inventory") != -1)
 		have_cycle_inventory = string_to_number(values[peramitors.find("have_cycle_inventory")]);
-	//if(peramitors.find("checkcfu")!=-1)
-	//{
-	//checkcfu=string_to_number(values[peramitors.find("checkcfu")]);
-	//}
-	//if(peramitors.find("checkcmotd")!=-1)
-	//{
-	//checkcmotd=string_to_number(values[peramitors.find("checkcmotd")]);
-	//}
-	//if(peramitors.find("motdshow")!=-1)
-	//{
-	//motdshow=string_to_number(values[peramitors.find("motdshow")]);
-	//}
 	if (peramitors.find("motdmotd") != -1)
 		motdmotd = string_to_number(values[peramitors.find("motdmotd")]);
 	if (peramitors.find("behind_pitch_decrease") != -1)
@@ -2294,15 +2276,15 @@ void netloop() {
 					p.play_stationary("reconnected" + sndtype, false);
 					reconnect();
 					return;
-				} else if (parsed[0] == "msgvoc�ganhou") {
+				} else if (parsed[0] == "msgvoc ganhou") {
 					string m = ("you got ") + " " + parsed[1] + " xp!";
 					add_sbuffer_item("speech", m);
 					add_buffer_item("misc", m);
-				} else if (parsed[0] == "msgvoc�ganhou2") {
+				} else if (parsed[0] == "msgvoc ganhou2") {
 					string m = ("you got ") + " " + parsed[1] + " " + ("xp because of double xp!");
 					add_sbuffer_item("speech", m);
 					add_buffer_item("misc", m);
-				} else if (parsed[0] == "msgvoc�ganhou10") {
+				} else if (parsed[0] == "msgvoc ganhou10") {
 					string m = ("you got ") + " " + parsed[1] + " " + ("xp because of super xp!");
 					add_sbuffer_item("speech", m);
 					add_buffer_item("misc", m);
